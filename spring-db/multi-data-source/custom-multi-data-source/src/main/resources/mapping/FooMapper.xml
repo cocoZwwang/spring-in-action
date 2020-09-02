@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="spring.in.action.custom.multi.datasource.mapper.FooMapper">
+
+    
+    <resultMap id="FooMap" type="spring.in.action.custom.multi.datasource.domain.Foo">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="bar" jdbcType="VARCHAR" property="bar"/>
+    </resultMap>
+
+    <select id="selectAll" resultMap="FooMap">
+        select * from FOO
+    </select>
+
+    <insert id="insert" parameterType="spring.in.action.custom.multi.datasource.domain.Foo">
+        insert into FOO (id,bar) values (#{id,jdbcType=INTEGER},#{bar,jdbcType=VARCHAR})
+    </insert>
+
+</mapper>
